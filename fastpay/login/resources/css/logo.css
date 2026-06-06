@@ -1,0 +1,19 @@
+/* FastPay logo — header above login card (Keycloak default placement) */
+
+#kc-header,
+#kc-header-wrapper,
+.pf-v5-c-login__header {
+    display: block !important;
+}
+
+#kc-header-wrapper {
+    text-align: center;
+}
+
+.fastpay-logo,
+#kc-header-wrapper img {
+    height: 63px;
+    width: auto;
+    max-width: 220px;
+    display: inline-block;
+}
