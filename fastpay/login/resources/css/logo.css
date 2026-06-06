@@ -1,0 +1,47 @@
+/* Logo sizing only — keeps default Keycloak UI */
+
+.pf-v5-c-login__container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+#kc-header,
+.pf-v5-c-login__header {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 0 0 24px !important;
+    padding: 0 !important;
+}
+
+#kc-header-wrapper {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+
+.fastpay-logo {
+    display: block !important;
+    height: auto !important;
+    max-height: 64px !important;
+    width: auto !important;
+    max-width: min(280px, 85vw) !important;
+    object-fit: contain !important;
+}
+
+@media (max-width: 480px) {
+    #kc-header,
+    .pf-v5-c-login__header {
+        margin-bottom: 16px !important;
+    }
+
+    .fastpay-logo {
+        max-height: 48px !important;
+        max-width: min(220px, 80vw) !important;
+    }
+}
