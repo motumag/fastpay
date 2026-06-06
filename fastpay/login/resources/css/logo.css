@@ -1,7 +1,11 @@
 /* Logo inside login card, above "Sign in to your account" */
 
 .pf-v5-c-login__main-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
     text-align: center !important;
+    width: 100% !important;
 }
 
 .fastpay-logo-wrapper {
@@ -9,8 +13,28 @@
     justify-content: center !important;
     align-items: center !important;
     width: 100% !important;
-    margin: 0 0 20px !important;
+    flex: 0 0 auto !important;
+    order: 1 !important;
+    margin: 0 0 16px !important;
     padding: 0 !important;
+}
+
+#kc-page-title,
+.pf-v5-c-login__main-title {
+    width: 100% !important;
+    flex: 0 0 auto !important;
+    order: 2 !important;
+    text-align: center !important;
+    margin: 0 !important;
+}
+
+.pf-v5-c-login__main-header-utilities {
+    width: 100% !important;
+    flex: 0 0 auto !important;
+    order: 3 !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 12px !important;
 }
 
 .fastpay-logo {
@@ -24,7 +48,7 @@
 
 @media (max-width: 480px) {
     .fastpay-logo-wrapper {
-        margin-bottom: 16px !important;
+        margin-bottom: 12px !important;
     }
 
     .fastpay-logo {
