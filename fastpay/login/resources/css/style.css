@@ -66,16 +66,7 @@ body,
     z-index: 0;
 }
 
-/* ── Hide default Keycloak header bar ─────────────────────── */
-
-#kc-header,
-#kc-header-wrapper,
-.login-pf-page-header,
-.pf-v5-c-login__header {
-    display: none !important;
-}
-
-/* ── Center everything vertically & horizontally ──────────── */
+/* ── Center page ──────────────────────────────────────────── */
 
 .login-pf-page,
 #kc-container,
@@ -91,34 +82,42 @@ body,
     z-index: 1;
 }
 
-#kc-content,
-#kc-content-wrapper,
-.pf-v5-c-login__container,
-.pf-v5-c-login__main {
+.pf-v5-c-login__container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
     width: 100% !important;
     max-width: var(--card-width) !important;
     margin: 0 auto !important;
-    float: none !important;
-    flex: none !important;
+    gap: 24px;
 }
 
-/* ── The login card ───────────────────────────────────────── */
+/* ── Login card (single card only — do not style inner wrappers) ── */
 
-.card-pf,
-#kc-form-wrapper,
-#kc-form,
 .pf-v5-c-login__main,
 .login-box {
     background: var(--color-surface) !important;
     border: none !important;
     border-radius: var(--radius-lg) !important;
     box-shadow: var(--shadow-card) !important;
-    padding: 40px 36px 32px !important;
+    padding: 32px 28px 28px !important;
     width: 100% !important;
-    max-width: var(--card-width) !important;
-    margin: 0 auto !important;
-    text-align: center;
+    margin: 0 !important;
     animation: fadeUp 0.55s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+#kc-form-wrapper,
+#kc-form,
+#kc-content,
+#kc-content-wrapper,
+.card-pf {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
 }
 
 @keyframes fadeUp {
@@ -132,41 +131,26 @@ body,
     }
 }
 
-/* ── Logo ─────────────────────────────────────────────────── */
-
-#kc-logo-wrapper,
-#kc-logo,
-.pf-v5-c-brand,
-.login-pf-page .logo,
-.login-box img,
-#kc-content-wrapper img,
-.pf-v5-c-login__header img {
-    display: block !important;
-    margin: 0 auto 20px !important;
-    max-width: 160px !important;
-    width: auto !important;
-    height: auto !important;
-}
-
 /* ── Page title ───────────────────────────────────────────── */
+
+.pf-v5-c-login__main-header {
+    text-align: center !important;
+    margin-bottom: 24px !important;
+}
 
 #kc-page-title,
 .pf-v5-c-title,
-.pf-v5-c-login__main-header,
-.login-box h2,
-#kc-content-wrapper h1,
-#kc-content-wrapper h2 {
+.login-box h2 {
     color: var(--color-text) !important;
     font-size: 1.375rem !important;
     font-weight: 700 !important;
     letter-spacing: -0.02em !important;
     line-height: 1.3 !important;
-    margin: 0 0 28px !important;
+    margin: 0 !important;
     text-align: center !important;
 }
 
-#kc-page-title::after,
-.pf-v5-c-login__main-header::after {
+#kc-page-title::after {
     content: "";
     display: block;
     width: 40px;
@@ -176,44 +160,33 @@ body,
     margin: 12px auto 0;
 }
 
-/* ── Form layout — force vertical stack ───────────────────── */
+/* ── Form layout ──────────────────────────────────────────── */
 
-#kc-form-login,
-#kc-register-form,
-.pf-v5-c-form,
-form[id^="kc-"] {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 0 !important;
+.pf-v5-c-login__main-body,
+.pf-v5-c-form {
     width: 100% !important;
 }
 
-#kc-form-login > div,
-#kc-form-login > .form-group,
 .pf-v5-c-form__group,
 .pf-c-form__group,
-.form-group,
-[class*="form__group"] {
+.form-group {
     width: 100% !important;
-    max-width: 100% !important;
-    flex: none !important;
-    float: none !important;
-    display: block !important;
-    margin: 0 0 16px !important;
-    padding: 0 !important;
-    text-align: left !important;
+    margin-bottom: 16px !important;
 }
 
-/* Kill any Bootstrap / PatternFly column side-by-side layout */
-#kc-form-login .col-sm-6,
-#kc-form-login .col-md-6,
-#kc-form-login .col-lg-6,
-#kc-form-login [class*="col-"] {
+/* PatternFly password field — input + eye icon side by side */
+.pf-v5-c-input-group {
+    display: flex !important;
     width: 100% !important;
-    max-width: 100% !important;
-    flex: 0 0 100% !important;
-    padding: 0 !important;
+}
+
+.pf-v5-c-input-group__item:first-child {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+}
+
+.pf-v5-c-input-group__item:last-child {
+    flex: 0 0 auto !important;
 }
 
 /* ── Labels ─────────────────────────────────────────────────── */
@@ -232,15 +205,12 @@ label,
 
 /* ── Inputs ─────────────────────────────────────────────────── */
 
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="tel"],
-input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="hidden"]),
 .pf-v5-c-form-control,
 .pf-c-form-control,
-.form-control {
-    display: block !important;
+.form-control,
+#kc-form-login input[type="text"],
+#kc-form-login input[type="password"],
+#kc-form-login input[type="email"] {
     width: 100% !important;
     padding: 13px 16px !important;
     background: #f9fafb !important;
@@ -254,6 +224,17 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type=
     transition: border-color var(--transition), box-shadow var(--transition),
         background-color var(--transition) !important;
     margin: 0 !important;
+}
+
+.pf-v5-c-input-group .pf-v5-c-form-control {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.pf-v5-c-input-group__item:last-child .pf-v5-c-button {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    height: 100% !important;
 }
 
 input::placeholder,
@@ -296,16 +277,13 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
-/* ── Login button ───────────────────────────────────────────── */
+/* ── Login button (submit only — not password toggle) ───────── */
 
 #kc-login,
 #kc-register,
-input[type="submit"],
-button[type="submit"],
-.pf-v5-c-button.pf-m-primary,
-.pf-c-button.pf-m-primary,
-.btn-primary,
-button:not([type="button"]):not(.pf-v5-c-menu-toggle):not(.pf-c-menu-toggle) {
+#kc-form-buttons .pf-v5-c-button.pf-m-primary,
+#kc-form-buttons input[type="submit"],
+.pf-v5-c-form__actions .pf-v5-c-button.pf-m-primary {
     display: block !important;
     width: 100% !important;
     padding: 14px 20px !important;
@@ -330,10 +308,7 @@ button:not([type="button"]):not(.pf-v5-c-menu-toggle):not(.pf-c-menu-toggle) {
 }
 
 #kc-login:hover,
-input[type="submit"]:hover,
-.pf-v5-c-button.pf-m-primary:hover,
-.btn-primary:hover,
-button[type="submit"]:hover {
+#kc-form-buttons .pf-v5-c-button.pf-m-primary:hover {
     transform: translateY(-2px) !important;
     box-shadow: 0 8px 24px rgba(37, 59, 128, 0.5) !important;
     filter: brightness(1.06) !important;
@@ -345,10 +320,23 @@ button[type="submit"]:hover {
 }
 
 #kc-login:active,
-input[type="submit"]:active,
-button[type="submit"]:active {
+#kc-form-buttons .pf-v5-c-button.pf-m-primary:active {
     transform: translateY(0) !important;
     filter: brightness(0.97) !important;
+}
+
+/* Password visibility toggle — keep compact */
+.pf-v5-c-input-group .pf-v5-c-button.pf-m-control {
+    width: auto !important;
+    padding: 0 14px !important;
+    margin: 0 !important;
+    background: #f9fafb !important;
+    color: var(--color-text) !important;
+    border: 1.5px solid var(--color-border) !important;
+    border-left: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+    filter: none !important;
 }
 
 #kc-form-buttons,
@@ -515,44 +503,32 @@ a:hover {
     #kc-form-wrapper,
     .pf-v5-c-login__main,
     .login-box {
-        padding: 28px 20px 24px !important;
+        padding: 24px 20px 20px !important;
         border-radius: 16px !important;
-    }
-
-    #kc-logo-wrapper img,
-    #kc-logo,
-    .login-box img {
-        max-width: 130px !important;
-        margin-bottom: 16px !important;
     }
 
     #kc-page-title,
     .pf-v5-c-title {
         font-size: 1.125rem !important;
-        margin-bottom: 20px !important;
     }
 
-    #kc-form-login > div,
-    #kc-form-login > .form-group,
     .pf-v5-c-form__group,
     .form-group {
         margin-bottom: 12px !important;
     }
 
-    input[type="text"],
-    input[type="password"],
-    input[type="email"],
     .pf-v5-c-form-control,
     .pf-c-form-control,
-    .form-control {
+    .form-control,
+    #kc-form-login input[type="text"],
+    #kc-form-login input[type="password"],
+    #kc-form-login input[type="email"] {
         padding: 12px 14px !important;
-        font-size: 16px !important; /* prevents iOS zoom on focus */
+        font-size: 16px !important;
     }
 
     #kc-login,
-    input[type="submit"],
-    button[type="submit"],
-    .pf-v5-c-button.pf-m-primary {
+    #kc-form-buttons .pf-v5-c-button.pf-m-primary {
         padding: 13px 16px !important;
     }
 }
@@ -569,20 +545,13 @@ a:hover {
     #kc-form-wrapper,
     .pf-v5-c-login__main,
     .login-box {
-        padding: 24px 16px 20px !important;
+        padding: 20px 16px 18px !important;
         border-radius: 14px !important;
     }
 
     #kc-page-title,
     .pf-v5-c-title {
         font-size: 1.0625rem !important;
-        margin-bottom: 16px !important;
-    }
-
-    #kc-logo-wrapper img,
-    #kc-logo,
-    .login-box img {
-        max-width: 112px !important;
     }
 }
 
@@ -601,29 +570,19 @@ a:hover {
     #kc-form-wrapper,
     .pf-v5-c-login__main,
     .login-box {
-        padding: 20px 24px 18px !important;
+        padding: 16px 20px 14px !important;
         margin: 8px 0 !important;
-    }
-
-    #kc-logo-wrapper img,
-    #kc-logo,
-    .login-box img {
-        max-width: 100px !important;
-        margin-bottom: 10px !important;
     }
 
     #kc-page-title,
     .pf-v5-c-title {
         font-size: 1rem !important;
-        margin-bottom: 14px !important;
     }
 
-    #kc-page-title::after,
-    .pf-v5-c-login__main-header::after {
+    #kc-page-title::after {
         margin-top: 8px !important;
     }
 
-    #kc-form-login > div,
     .pf-v5-c-form__group,
     .form-group {
         margin-bottom: 10px !important;

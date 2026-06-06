@@ -1,19 +1,44 @@
-/* FastPay logo — header above login card (Keycloak default placement) */
+/* FastPay logo — centered above login card */
 
 #kc-header,
-#kc-header-wrapper,
 .pf-v5-c-login__header {
-    display: block !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
 }
 
 #kc-header-wrapper {
-    text-align: center;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    text-align: center !important;
+    background: transparent !important;
 }
 
 .fastpay-logo,
 #kc-header-wrapper img {
-    height: 63px;
-    width: auto;
-    max-width: 220px;
-    display: inline-block;
+    display: block !important;
+    height: auto !important;
+    max-height: 72px !important;
+    width: auto !important;
+    max-width: min(240px, 80vw) !important;
+    margin: 0 auto !important;
+    object-fit: contain !important;
+}
+
+@media (max-width: 480px) {
+    .fastpay-logo,
+    #kc-header-wrapper img {
+        max-height: 56px !important;
+        max-width: min(200px, 70vw) !important;
+    }
+
+    .pf-v5-c-login__container {
+        gap: 16px !important;
+    }
 }
