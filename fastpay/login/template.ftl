@@ -92,13 +92,11 @@
 
 <div class="${properties.kcLogin!}">
   <div class="${properties.kcLoginContainer!}">
-    <header id="kc-header" class="pf-v5-c-login__header">
-      <div id="kc-header-wrapper" class="pf-v5-c-brand">
-        <img src="${url.resourcesPath}/img/fastpay-logo.jpeg" alt="FastPay" class="fastpay-logo" />
-      </div>
-    </header>
     <main class="${properties.kcLoginMain!}">
       <div class="${properties.kcLoginMainHeader!}">
+        <div class="fastpay-logo-wrapper">
+          <img src="${url.resourcesPath}/img/fastpay-logo.jpeg" alt="FastPay" class="fastpay-logo" />
+        </div>
         <h1 class="${properties.kcLoginMainTitle!}" id="kc-page-title"><#nested "header"></h1>
         <#if realm.internationalizationEnabled  && locale.supported?size gt 1>
         <div class="${properties.kcLoginMainHeaderUtilities!}">
